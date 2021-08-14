@@ -54,7 +54,7 @@ class SimpleReport:
 
         older_return = MSG_OLDER_DATE + str(older_date) + "\n"
         nearest_return = MSG_NEAREST_DATE + str(nearest_exp) + "\n"
-        company_return = MSG_COMPANY + max(companys, key=companys.get)
+        company_return = MSG_COMPANY + max(companys, key=companys.get) + "\n"
         return older_return + nearest_return + company_return
     """
     :author: Rahel

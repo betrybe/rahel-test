@@ -1,12 +1,12 @@
-import simple_report
+from inventory_report.reports.simple_report import SimpleReport
 
-MSG_STOCK = "Produtos estocados por empresa:\n"
+MSG_STOCK = "Produtos estocados por empresa: \n"
 
 
-class CompleteReport(simple_report.SimpleReport):
+class CompleteReport(SimpleReport):
     @staticmethod
     def generate(data):
-        super_return = simple_report.SimpleReport.generate(data)
+        super_return = SimpleReport.generate(data)
         companys = dict()
         for report in data:
             if report['nome_da_empresa'] in companys:
@@ -14,7 +14,7 @@ class CompleteReport(simple_report.SimpleReport):
             else:
                 companys[report['nome_da_empresa']] = 1
 
-        final_return = super_return + "\n\n"
+        final_return = super_return + "\n"
         final_return += MSG_STOCK
 
         for item in companys:
