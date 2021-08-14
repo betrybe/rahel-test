@@ -7,7 +7,6 @@ class CompleteReport(simple_report.SimpleReport):
     @staticmethod
     def generate(data):
         super_return = simple_report.SimpleReport.generate(data)
-
         companys = dict()
         for report in data:
             if report['nome_da_empresa'] in companys:
