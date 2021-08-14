@@ -19,6 +19,23 @@ class CompleteReport(simple_report.SimpleReport):
         final_return += MSG_STOCK
 
         for item in companys:
-            final_return += "- " + item + ": " + str(companys[item])
+            final_return += "- " + item + ": " + str(companys[item]) + "\n"
 
         return final_return
+        """
+        :author: Rahel
+        generate(data)
+        inherits parent class behavior SimpleReport
+        Returns the formatted report received by the data parameter as follows:
+            Data de fabricação mais antiga: YYYY-MM-DD
+            Data de validade mais próxima: YYYY-MM-DD
+            Empresa com maior quantidade de produtos estocados: NOME DA EMPRESA
+
+            Produtos estocados por empresa:
+            - Physicians Total Care, Inc.: QUANTIDADE
+            - Newton Laboratories, Inc.: QUANTIDADE
+            - Forces of Nature: QUANTIDADE
+
+        :param data: list of dict
+        :return: string
+        """
