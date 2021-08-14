@@ -20,7 +20,7 @@ class SimpleReport:
     """
     @staticmethod
     def __nearest(a, b):
-        return ((a - date.today()) > (b - date.today()))
+        return ((a - date.today()) < (b - date.today()))
     """
     :author: Rahel
     __nearest(entry)
@@ -34,7 +34,7 @@ class SimpleReport:
     def generate(data):
         today = date.today()
         older_date = date.max
-        nearest_exp = date.min
+        nearest_exp = SimpleReport.__date(data[0]['data_de_validade'])
         companys = dict()
         for report in data:
             fabrication = SimpleReport.__date(report['data_de_fabricacao'])
@@ -43,7 +43,7 @@ class SimpleReport:
             if fabrication < older_date:
                 older_date = fabrication
 
-            if (item_date < today) and \
+            if (item_date >= today) and \
                     SimpleReport.__nearest(item_date, nearest_exp):
                 nearest_exp = item_date
 
