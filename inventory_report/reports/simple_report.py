@@ -6,43 +6,45 @@ MSG_COMPANY = "Empresa com maior quantidade de produtos estocados: "
 
 
 class SimpleReport:
-    def __date(self, entry):
+    @staticmethod
+    def __date(entry):
         splited = entry.split('-')
         return date(int(splited[0]), int(splited[1]), int(splited[2]))
     """
     :author: Rahel
-    __date(self, entry)
+    __date(entry)
         is a util function to reduce code replication
         Returns a instance of datetime.date
     :param entry: string
     :return: datetime.date
     """
-
-    def __nearest(self, a, b):
+    @staticmethod
+    def __nearest(a, b):
         return ((a - date.today()) > (b - date.today()))
-            """
+    """
     :author: Rahel
-    __nearest(self, entry)
+    __nearest(entry)
         is a util function to verify if date a is nearest than date b to today
         Returns True if a is nearest than b, and False otherwise
-    :param a: datetime.date 
+    :param a: datetime.date
     :param b: datetime.date
     :return: Bool
     """
-
-    def generate(self, data):
+    @staticmethod
+    def generate(data):
         today = date.today()
         older_date = date.max
         nearest_exp = date.min
-        companys = {}
+        companys = dict()
         for report in data:
-            manufacturing_date = self.__date(report['data_de_fabricacao'])
-            item_date = self.__date(report['data_de_validade'])
+            fabrication = SimpleReport.__date(report['data_de_fabricacao'])
+            item_date = SimpleReport.__date(report['data_de_validade'])
 
-            if manufacturing_date < older_date:
-                older_date = manufacturing_date
+            if fabrication < older_date:
+                older_date = fabrication
 
-            if (item_date < today) and self.__nearest(item_date, nearest_exp):
+            if (item_date < today) and \
+                    SimpleReport.__nearest(item_date, nearest_exp):
                 nearest_exp = item_date
 
             if report['nome_da_empresa'] in companys:
@@ -56,7 +58,7 @@ class SimpleReport:
         return older_return + nearest_return + company_return
     """
     :author: Rahel
-    generate(self, data)
+    generate(data)
         Returns the formatted report received by the data parameter as follows:
             Data de fabricação mais antiga: YYYY-MM-DD
             Data de validade mais próxima: YYYY-MM-DD
