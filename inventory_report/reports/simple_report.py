@@ -3,6 +3,14 @@ class SimpleReport:
     def __create_date(self, entry):
         splited = entry.split('-')
         return datetime.date(int(splited[0]), int(splited[1]), int(splited[2])) 
+    """
+    __create_date(self, entry)
+        is a util function to reduce code replication
+        Returns a instance of datetime.date
+    
+    :param entry: string
+    :return: datetime.date
+    """
 
     def generate(self, data):        
         today = datetime.date.today()        
@@ -32,3 +40,13 @@ class SimpleReport:
                             +"Data de validade mais próxima: " +str(nearest_expiration) + "\n" \
                                 +"Empresa com maior quantidade de produtos estocados: " +max(companys, key=companys.get)
         return formated_report
+    """
+    generate(self, data)
+        Returns the formatted report received by the data parameter as follows:
+            Data de fabricação mais antiga: YYYY-MM-DD
+            Data de validade mais próxima: YYYY-MM-DD
+            Empresa com maior quantidade de produtos estocados: NOME DA EMPRESA
+    
+    :param data: list of dict
+    :return: string
+    """
