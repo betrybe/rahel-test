@@ -20,6 +20,15 @@ class SimpleReport:
 
     def __nearest(self, a, b):
         return ((a - date.today()) > (b - date.today()))
+            """
+    :author: Rahel
+    __nearest(self, entry)
+        is a util function to verify if date a is nearest than date b to today
+        Returns True if a is nearest than b, and False otherwise
+    :param a: datetime.date 
+    :param b: datetime.date
+    :return: Bool
+    """
 
     def generate(self, data):
         today = date.today()
