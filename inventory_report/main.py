@@ -8,6 +8,11 @@ import sys
 
 SIMPLE = "simples"
 COMPLETE = "completo"
+IMPORTER_EXT = {
+    '.csv': CsvImporter,
+    '.json': JsonImporter,
+    '.xml': XmlImporter
+}
 
 
 def main():
@@ -18,12 +23,8 @@ def main():
     path = sys.argv[1]
     type_report = sys.argv[2]
 
-    if ".csv" in path:
-        report = InventoryRefactor(CsvImporter)
-    elif ".json" in path:
-        report = InventoryRefactor(JsonImporter)
-    elif ".xml" in path:
-        report = InventoryRefactor(XmlImporter)
+    extension = len(path) - path.index('.')
+    report = InventoryRefactor(IMPORTER_EXT[path[-extension:]])
 
     report.import_data(path, type_report)
 
