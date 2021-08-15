@@ -5,8 +5,7 @@ import xmltodict
 class XmlImporter(Importer):
     def import_data(path):
         if not(".xml" in path):
-            raise NameError("Wrong extension error, expected a \'.xml\' \
-                            and received a " + path.split(".")[1])
+            raise ValueError("Arquivo inválido")
         else:
             with open(path) as xml_file:
                 reader = xmltodict.parse(xml_file.read())
