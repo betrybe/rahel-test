@@ -46,9 +46,9 @@ class Inventory:
             for item in reader['dataset']['record']:
                 l_dict.append(item)
             if type == SIMPLE:
-                return SimpleReport.generate(list(l_dict))
+                return SimpleReport.generate(l_dict)
             elif type == COMPLETE:
-                return CompleteReport.generate(list(l_dict))
+                return CompleteReport.generate(l_dict)
     """
     :author: Rahel
     __xml_handler(file_path)
