@@ -26,7 +26,7 @@ class InventoryRefactor(Iterable):
         self.data.extend(self.importer.import_data(path))
     """
     :author: Rahel
-    import_data(self, path, type)
+    import_data(self, path)
         Import the data and set it in a parameter
     :param path: string
     :param type: string
